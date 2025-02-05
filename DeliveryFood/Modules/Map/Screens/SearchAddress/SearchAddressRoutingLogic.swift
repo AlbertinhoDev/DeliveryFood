@@ -1,0 +1,3 @@
+import UIKit
+
+protocol SearchAddressRoutingLogic {}

@@ -1,10 +1,15 @@
 import UIKit
 
+protocol RestaurantsListDisplayLogic: AnyObject {}
+
 class RestaurantsListViewController: UIViewController {
-    var router: MapRoutingLogic?
+    
+    var presenter: RestaurantListPresentationLogic?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
     }
 }
+
+extension RestaurantsListViewController: RestaurantsListDisplayLogic {}

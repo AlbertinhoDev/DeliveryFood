@@ -16,14 +16,20 @@ final class AppCoordinator {
     
     private func startMapFlow() {
         let mapCoordinator = MapFlowCoordinator(router: router )
+        mapCoordinator.start()
+        
         mapCoordinator.finishFlow = { [unowned self] in
             startMainFlow()
         }
-        mapCoordinator.start()
     }
     
     private func startMainFlow() {
+        let mainCoordinator = MainFlowCoordinator(router: router)
+        mainCoordinator.start()
         
+        mainCoordinator.finishFlow = { [unowned self] in //здесь бессхозная ссылка потому что AppCoordinator живет очень долго, а се остальные потоки - нет
+            startMapFlow()
+        }
     }
 }
 
